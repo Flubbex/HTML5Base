@@ -6,7 +6,7 @@
 * mocha for testing
 * JSHint code verification + jshint-stylish output
 * Gulp tasks to automate everything
-* Minimal CSS Skeleton framework (22,6kb)
+* Material CSS and JS for building beautiful user experiences
 
 ### Gulp tasks
 | Name|Task|Source|Destination|

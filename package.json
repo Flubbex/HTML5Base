@@ -1,7 +1,7 @@
 {
-  "name": "html5base",
+  "name": "materialGirl",
   "version": "1.0.0",
-  "description": "Basic framework for my Browserify projects.",
+  "description": "Material Design Example",
   "scripts": {
     "test": "mocha"
   },

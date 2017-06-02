@@ -5,7 +5,7 @@
     <!-- Basic Page Needs
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta charset="utf-8">
-    <title>Page Title</title>
+    <title>MaterialGirl</title>
     <meta name="description" content="">
     <meta name="author" content="Flubbex">
 
@@ -19,8 +19,7 @@
 
     <!-- Skeleton CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/mui.min.css">
 
     <!-- Custom CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -32,34 +31,81 @@
 
     <!-- JavaScript
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <script type="text/javascript" src="js/jquery.min.js">   </script>
+    <script type="text/javascript" src="js/mui.min.js">   </script>
     <script type="text/javascript" src="js/index.js">   </script>
+    
+    
+    
 
 </head>
-<body>
-
-    <!-- Primary Page Layout
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <div class="container" style="margin-top: 2.5%;">
-        <div class="row">
-            <div class="one-column">
-                <h4>Basic Page</h4>
-                <p>
-                    This index.html page is a placeholder with the CSS,
-                    font and favicon. It's just waiting for you to add
-                    some content!
-                </p>
-                <h5>More help</h5>
-                <ul>
-                    <li>
-                        <a href="http://www.getskeleton.com">
-                            Skeleton documentation
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<body class="hide-sidedrawer">
+	<div id="sidedrawer" class="mui--no-user-select">
+      <div id="sidedrawer-brand" class="mui--appbar-line-height accent-color">
+        <span class="mui--text-title">materialGirl</span>
+      </div>
+      
+      <div class="mui-divider divider-color"></div>
+      <ul>
+        <li>
+          <strong>Category 1</strong>
+          <ul>
+            <li><a href="#">Item 1</a></li>
+            <li><a href="#">Item 2</a></li>
+            <li><a href="#">Item 3</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Category 2</strong>
+          <ul>
+            <li><a href="#">Item 1</a></li>
+            <li><a href="#">Item 2</a></li>
+            <li><a href="#">Item 3</a></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Category 3</strong>
+          <ul>
+            <li><a href="#">Item 1</a></li>
+            <li><a href="#">Item 2</a></li>
+            <li><a href="#">Item 3</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
-
+    
+    <header id="header" >
+      <div class="mui-appbar mui--appbar-line-height default-primary-color">
+        <div class="mui-container-fluid">
+          <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
+          <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
+          <span class="mui--text-title mui--visible-xs-inline-block mui--visible-sm-inline-block">materialGirl</span>
+        </div>
+      </div>
+    </header>
+    
+    <div id="content-wrapper">
+      <div class="mui--appbar-height"></div>
+      <div class="mui-container-fluid" id="content">
+        <br>
+        <h1>materialGirl</h1>
+        <p style="font-style:italic;">If Browserify and material design had a baby..</p>
+       </div>
+    </div>
+    
+    <footer id="footer" class="default-primary-color">
+      <div class="mui-container-fluid">
+        <br>
+        materialGirl Made with ♥
+            by 
+            <a href="https://github.com/flubbex">Flubbex</a> 
+        <br>
+        MUI.js + MUI CSS Made with ♥
+            by 
+            <a href="https://www.muicss.com">MUI</a>
+        
+      </div>
+    </footer>
     <!-- End Document
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>

@@ -5,7 +5,7 @@
     <!-- Basic Page Needs
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta charset="utf-8">
-    <title>MaterialGirl</title>
+    <title>Fluxbase</title>
     <meta name="description" content="">
     <meta name="author" content="Flubbex">
 
@@ -13,14 +13,9 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Fonts
-    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link href="css/font_raleway.css" rel="stylesheet" type="text/css">
-
     <!-- Skeleton CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="css/mui.min.css">
-
+    <link rel="stylesheet" href="css/surface_styles.css">
     <!-- Custom CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="stylesheet" href="css/index.css">
@@ -29,83 +24,30 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="icon" type="image/png" href="images/favicon.png">
 
-    <!-- JavaScript
+    <!-- Application JavaScript
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <script type="text/javascript" src="js/jquery.min.js">   </script>
-    <script type="text/javascript" src="js/mui.min.js">   </script>
-    <script type="text/javascript" src="js/index.js">   </script>
-    
-    
-    
+    <script type="text/javascript" src="js/fluxbuild.js">   </script>
 
 </head>
-<body class="hide-sidedrawer">
-	<div id="sidedrawer" class="mui--no-user-select">
-      <div id="sidedrawer-brand" class="mui--appbar-line-height accent-color">
-        <span class="mui--text-title">materialGirl</span>
-      </div>
-      
-      <div class="mui-divider divider-color"></div>
-      <ul>
-        <li>
-          <strong>Category 1</strong>
-          <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-          </ul>
-        </li>
-        <li>
-          <strong>Category 2</strong>
-          <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-          </ul>
-        </li>
-        <li>
-          <strong>Category 3</strong>
-          <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    
-    <header id="header" >
-      <div class="mui-appbar mui--appbar-line-height default-primary-color">
-        <div class="mui-container-fluid">
-          <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
-          <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
-          <span class="mui--text-title mui--visible-xs-inline-block mui--visible-sm-inline-block">materialGirl</span>
-        </div>
-      </div>
-    </header>
-    
-    <div id="content-wrapper">
-      <div class="mui--appbar-height"></div>
-      <div class="mui-container-fluid" id="content">
-        <br>
-        <h1>materialGirl</h1>
-        <p style="font-style:italic;">If Browserify and material design had a baby..</p>
-       </div>
-    </div>
-    
-    <footer id="footer" class="default-primary-color">
-      <div class="mui-container-fluid">
-        <br>
-        materialGirl Made with ♥
-            by 
-            <a href="https://github.com/flubbex">Flubbex</a> 
-        <br>
-        MUI.js + MUI CSS Made with ♥
-            by 
-            <a href="https://www.muicss.com">MUI</a>
-        
-      </div>
-    </footer>
+<body>
+ <input type="checkbox" id="nav--super-vertical-responsive">
+ <label for="nav--super-vertical-responsive">MENU</label>
+
+ <aside id="sidebar" class="nav--super-vertical g--2 g-m--3 g-s--6 g-t--12 no-margin-vertical" role="sidebar"></aside>
+
+ <main id="main" class="g--10 g-m--12 m--2 m-m--0 no-margin-vertical" role="main"></main>
+
+    <!-- Page analytics (It's mr. Steal your clicks)
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+ <!--script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+   ga('create', 'UA-62569134-1', 'auto');
+   ga('send', 'pageview');
+ </script-->
     <!-- End Document
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>

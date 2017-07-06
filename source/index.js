@@ -1,69 +1,45 @@
-$(document).ready(function(){
-            
-		  var $bodyEl = $('body'),
-			  $sidedrawerEl = $('#sidedrawer');
-        
-		  
-		  // ==========================================================================
-		  // Toggle Sidedrawer
-		  // ==========================================================================
-		  function showSidedrawer() {
-			// show overlay
-			var options = {
-			  onclose: function() {
-				$sidedrawerEl
-				  .removeClass('active')
-				  .appendTo(document.body);
-			  }
-			};
-			
-			var $overlayEl = $(mui.overlay('on', options));
-			
-			// show element
-			$sidedrawerEl.appendTo($overlayEl);
-			setTimeout(function() {
-			  $sidedrawerEl.addClass('active');
-			}, 20);
-		  }
-		  
-		  
-		  function hideSidedrawer() {
-			$bodyEl.toggleClass('hide-sidedrawer');
-		  }
-		  
-		  
-		  $('.js-show-sidedrawer').on('click', showSidedrawer);
-		  $('.js-hide-sidedrawer').on('click', hideSidedrawer);
-		  
-		  
-		  // ==========================================================================
-		  // Animate menu
-		  // ==========================================================================
-		  var $titleEls = $('strong', $sidedrawerEl);
-		  
-		  $titleEls
-			.next()
-			.hide();
-		  
-		  $titleEls.on('click', function() {
-			$(this).next().slideToggle(200);
-		  });
-          
-          $bodyEl.fadeIn(250,function(){
-            
-          $("#content").slideDown(250);
-            
-            $(".sidedrawer-toggle")
-                .delay(500)
-                .animate({opacity:1},200,"linear",function(){
-                  $(this).animate({opacity:0.5},function(){
-                      $(this).animate({opacity:1},function(){
-                            $(this).animate({opacity:0.5},200);
-                          });
-                        
-                  });
-                });
-        });
-});
-        
-module.exports = {};
+console.log("Initializing fluxbuild");
+fluxbuild = {};
+
+//App config
+fluxbuild.config         = require("../config/app"),
+
+//App Dependencies
+fluxbuild.$              =
+                        function(e){
+                          return document.getElementById(e)
+                        }
+//window.jQuery           = require("jquery");
+fluxbuild.Backbone       = require("backbone");
+fluxbuild.emitter        = require("./lib/fluxmitter");
+fluxbuild.Handlebars     = require("handlebars/runtime");
+
+//App Templates (Generated)
+fluxbuild.template       = require("./templates");
+
+//Handlebar setup for layout support
+fluxbuild.Handlebars.registerHelper(
+  require('handlebars-layouts')(fluxbuild.Handlebars));
+
+//Register layout partial
+fluxbuild.Handlebars.registerPartial('layout',fluxbuild.template['layout']);
+
+
+//Load everything
+var content = require("./*/*.js",{mode:'hash'});
+
+//But prettier
+for (var entry in content)
+{
+var dashindex = entry.indexOf("/");
+var namespace = entry.slice(0,dashindex);
+var name      = entry.slice(dashindex+1,entry.length);
+
+fluxbuild[namespace]       = fluxbuild[namespace] || {};
+fluxbuild[namespace][name] = content[entry];
+}
+
+//Expands into main app
+require("./app.js",{mode:'expand'});
+
+module.exports = fluxbuild;

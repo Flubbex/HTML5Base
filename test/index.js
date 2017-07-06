@@ -1,4 +1,5 @@
 var assert  = require('assert');
+var domify      = require("domify"); //DO. NOT. TRUST.
 var app     = require("../source/index.js");
 
 describe('Application', function() {
@@ -8,4 +9,3 @@ describe('Application', function() {
     });
   });
 });
-

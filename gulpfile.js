@@ -1,89 +1,62 @@
-var gulp        = require("gulp"),
-    uglify      = require("gulp-uglify"),
-    browserify  = require("gulp-browserify"),
-    jshint      = require("gulp-jshint"),
-    open        = require("gulp-open"),
-    mocha       = require('gulp-mocha');
+//Config for gulp
+config            = require("./config/gulp");
 
-var package = require("./package.json");
+//Utilities
+function nameToTask(name){
+  return "./gulp/"+name+".js";
+}
 
-var app = {
-        name:package.name //used as main namespace name
-};
-
-//Test /source using /test and write a HTML report to /docs
-//TODO; write a JSON report to /docs
-gulp.task('test', function()
+function flatten(target,source)
 {
-    return gulp.src('/test/index.js')
-        .pipe(mocha())
-        //.pipe(gulp.dest('docs/info.html'))
-});
+    source = source || [];
+    return [].concat.apply(source,target);
+}
 
-//Lint /source
-//TODO; write a JSON report to /docs
-gulp.task('lint', function()
+function unnest(task)
 {
-    return gulp.src('source/index.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter("jshint-stylish",{verbose:true}))
-    .pipe(jshint.reporter("fail"))
-});
+    if (config.tasklist[task])
+    {
+      expanded.push(task);
+      return flatten(config.tasklist[task].map(unnest))
+    }
+    return task
+}
 
-//Watch for changes in /source, reload if so.
-gulp.task("watch", function()
+function flog(msg,color)
 {
-    return gulp.watch("source/**/*.js",["reload"]);
-});
+  color = color || "green";
+  util.log(util.colors[color](msg))
+}
 
-//Browserify /source files to /dist/developer
-gulp.task("build",  function()
-{
-    return gulp.src("source/index.js")
-    .pipe(browserify())
-    .pipe(gulp.dest("dist/developer"))
-});
+//Dependencies
+var gulp          = require("gulp"),
+    util          = require("gulp-util"),
+    HubRegistry   = require('gulp-hub'),
+    env           = util.env._.length > 0 ? util.env._ : ["default"],
+    expanded      = [],
+    tasks         = flatten(env.map(unnest)),
+    tasklist      = (tasks||["*"]).map(nameToTask);
 
-//merge all /dist/developer files into one
-gulp.task('merge', function(){
-  gulp.src('source/developer/**/*')
-    .pipe(gulp.dest('dist/developer/index.js'));
-});
+flog("========FLUX TASK LOADER========")
+/* load some gulpfiles into the registry */
+var hub = HubRegistry(tasklist);
 
-//Uglify /dist/developer to /dist/release
-gulp.task("compress", ["build"], function()
-{
-    return gulp.src("dist/developer/*.js")
-    .pipe(uglify())
-    .pipe(gulp.dest("dist/release"))
-});
+/* tell gulp to use the tasks just loaded */
+gulp.registry(hub);
 
-//Remove everything in /dist/developer and dist/test
-gulp.task("clean", function()
-{
-        //TODO: Implement /dist/dev and /dist/test cleaning
-});
+flog("=======FLUX TASKSET LOADER======")
+/* Load all tasks from config (if required)*/
+for (var task in config.tasklist)
+  if (tasks.includes(task)    ||
+      env.includes(task)      ||
+      expanded.includes(task) ||
+      env.length <= 0         )
+      {
+    gulp.task(task,gulp.series(config.tasklist[task]))
+    flog("Loaded: \t\t"+util.colors.cyan(task))
+  }
 
-//Publish files from /dist/developer to /docs/js
-gulp.task("publish-developer",["build"], function()
-{
-    return gulp.src("dist/developer/*.js")
-    .pipe(gulp.dest("docs/js"))
-});
+flog("============TASKLIST============")
+flog(tasks.join("\t"),'cyan')
 
-//Publish files from /dist/release to /docs/js
-gulp.task("publish",["compress"], function()
-{
-    return gulp.src("dist/release/*.js")
-    .pipe(gulp.dest("docs/js"))
-});
-
-//Open /doc/index.html in browser
-gulp.task("reload",["publish-developer"], function()
-{
-    return gulp.src("docs/index.html")
-    .pipe(open({uri:__dirname+"/docs/index.html"}))
-});
-
-gulp.task("default",        ["publish-developer"]);
-gulp.task("developer",      ["watch","publish-developer"]);
+flog("===========GULP START===========")

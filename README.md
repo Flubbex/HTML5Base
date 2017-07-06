@@ -1,4 +1,11 @@
-# HTML5base
+# Fluxbuild
+*Gulp 4 empowered build system for materialised Browserify projects.*
+
+Accurate documentation coming soon™
+
+*Historical documentation:*
+
+### HTML5base 
 *Basic framework for my Browserify projects.*
 
 ### Contains
@@ -50,4 +57,5 @@ Public HTML files.
                 jshint jshint-stylish mocha node-inspector*
 
 ### Credits
-[dhg](https://github.com/dhg) - [Skeleton](https://github.com/dhg/Skeleton)
+[mildrenben](https://github.com/mildrenben) - [Surface CSS](https://github.com/mildrenben/surface)
+

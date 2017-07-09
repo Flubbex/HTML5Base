@@ -1,6 +1,5 @@
 //Initializes app
-fluxbuild.setup = function(){
-
+module.exports = function(){
   var data = {
     //Capitalise first character for titles
     name:fluxbuild.config.name.charAt(0).toUpperCase() +
@@ -37,7 +36,6 @@ fluxbuild.setup = function(){
     router = new AppRouter();
 
     router.on("route:viewPage",function(page){
-      console.log("Got request")
       mainview.render(fluxbuild.template["page"][page]);
     })
 

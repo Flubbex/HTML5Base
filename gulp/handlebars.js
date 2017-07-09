@@ -11,7 +11,7 @@ gulp.task('handlebars', function()
 {
   return gulp.src(config.path.source_template+"**/*")
     .pipe(gulp_handlebars(Object.assign(config.handlebars,{handlebars:handlebars})))
-    .pipe(wrap(config.app.name+'.Handlebars.template(<%= contents %>)'))
+    .pipe(wrap((config.app.global||config.app.name)+'.Handlebars.template(<%= contents %>)'))
     .pipe(declare(Object.assign(config.handlebars.declare,{
       processName: function(e){
         var name = e.slice(e.lastIndexOf(config.path.source_template)+

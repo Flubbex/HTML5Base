@@ -28,7 +28,7 @@ function flog(msg,color)
   util.log(util.colors[color](msg))
 }
 
-//Still faster somehow
+//Precache everything and include custom tasks
 require("require-all")(__dirname+"/gulp");
 
 //Dependencies

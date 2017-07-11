@@ -3,7 +3,7 @@ config            = require("./config/gulp");
 
 //Utilities
 function nameToTask(name){
-  return "./gulp/"+name+".js";
+    return "./gulp/flux/"+name+".js";
 }
 
 function flatten(target,source)
@@ -27,6 +27,9 @@ function flog(msg,color)
   color = color || "green";
   util.log(util.colors[color](msg))
 }
+
+//Still faster somehow
+require("require-all")(__dirname+"/gulp");
 
 //Dependencies
 var gulp          = require("gulp"),

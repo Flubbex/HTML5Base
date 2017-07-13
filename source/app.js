@@ -12,7 +12,7 @@ module.exports = function(){
                           return word[0].toUpperCase()+word.slice(1)
                         }).join(" ")
                         }
-              })
+              }).reverse()
     },
 
     AppRouter = fluxbuild.Backbone.Router.extend({

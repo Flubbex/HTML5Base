@@ -68,13 +68,16 @@ module.exports["page"]["documentation"] = fluxbuild.Handlebars.template({"1":fun
 },"useData":true});
 module.exports["page"] = module.exports["page"] || {};
 module.exports["page"]["home"] = fluxbuild.Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    var stack1;
+    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing;
 
   return "\n"
-    + ((stack1 = (helpers.content || (depth0 && depth0.content) || helpers.helperMissing).call(depth0 != null ? depth0 : (container.nullContext || {}),"page",{"name":"content","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.content || (depth0 && depth0.content) || alias2).call(alias1,"header",{"name":"content","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.content || (depth0 && depth0.content) || alias2).call(alias1,"page",{"name":"content","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\n";
 },"2":function(container,depth0,helpers,partials,data) {
-    return "        <h2>Fast</h2>\n        <p>\n          Breaking Gulp 4 for better task management and faster build times. \n        </p>\n\n        <h2>Lightweight</h2>\n        <p>\n          Merge and uglify everything for smaller footprints.\n        </p>\n\n        <h2>Usability</h2>\n        <p>\n          Adapt and configure your way to a faster workflow.\n        </p>\n\n        <h2>Expendable</h2>\n        <p>\n          ..Or break things the way you like.\n        </p>\n\n\n";
+    return "    <div class=\"g--10 m--1\" style=\"margin:0;margin-left: 25px;text-align:center;\">\n          <h3 class=\"fade-in-from-top color--pink\">Make it go faster</h3>\n    </div>\n";
+},"4":function(container,depth0,helpers,partials,data) {
+    return "    <h2>Gulp 4</h2>\n      <p class=\"card\">\n        gulp is a toolkit for automating painful or time-consuming tasks in your development workflow, so you can stop messing around and build something.\n      </p>\n\n    <h2>Browserify</h2>\n    <p class=\"card\">\n      Browsers don't have the require method defined, but Node.js does. With Browserify you can write code that uses require in the same way that you would use it in Node.\n    </p>\n\n    <h2>Backbone</h2>\n    <p class=\"card\">\n      Backbone.js gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface.\n    </p>\n\n    <h2>Handlebars</h2>\n    <p class=\"card\">\n      Backbone.js gives structure to web applications by providing models with key-value binding and custom events, collections with a rich API of enumerable functions, views with declarative event handling, and connects it all to your existing API over a RESTful JSON interface.\n    </p>\n\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 

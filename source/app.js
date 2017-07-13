@@ -7,6 +7,7 @@ module.exports = function(){
     page:Object.keys(fluxbuild.template.page)
           .map(function(e){
                 return {address:e,
+                    //Split underscores into spaces and capitalize accordingly
                         title:e.split("_").map(function(word){
                           return word[0].toUpperCase()+word.slice(1)
                         }).join(" ")
@@ -21,22 +22,27 @@ module.exports = function(){
     });
 
   window.onload = function(){
-    var mainview = new fluxbuild
-                        .view
-                        .fluxview({el:       "#main",
-                                   template:  fluxbuild.template["page"]["home"],
-                                   viewdata:   data});
 
-    var sideview = new fluxbuild
+    var pageview = new fluxbuild
                         .view
-                        .fluxview({el:"#sidebar"});
+                        .page({el:       "#main",
+                               template:  fluxbuild.template["page"],
+                               default:   "home",
+                               model:     data});
 
-    sideview.render(fluxbuild.template["sidebar"],data);
+    var sidebarview = new fluxbuild
+                        .view
+                        .sidebar({el:"#sidebar",
+                                  template:fluxbuild.template["sidebar"],
+                                  navbutton:"#nav--super-vertical-responsive",
+                                  model:data});
+
+    sidebarview.render();
 
     router = new AppRouter();
 
     router.on("route:viewPage",function(page){
-      mainview.render(fluxbuild.template["page"][page]);
+      pageview.render(page);
     })
 
     fluxbuild.Backbone.history.start();

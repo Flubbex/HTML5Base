@@ -6,8 +6,7 @@ fluxbuild.config         = require("../config/app"),
 
 //App Dependencies
 fluxbuild.$              =
-                        function(e) {return document.getElementById(e.slice(1)); }
-                        //window.jQuery            = require("jquery");
+                         window.jQuery            = require("jquery");
 fluxbuild.Backbone       = require("backbone");
 fluxbuild.emitter        = require("./lib/fluxmitter");
 fluxbuild.Handlebars     = require("handlebars/runtime");

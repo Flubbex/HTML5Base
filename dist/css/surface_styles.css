@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700|Gentium+Book+Basic:400,700);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700|Gentium+Book+Basic:400,700);
 html, body {
   width: 100%; }
 
@@ -691,22 +691,22 @@ body {
     background-color: #4aa3df; }
 
 .btn--flat {
-  background-image: radial-gradient(circle, #28e1bd 1%, #6bebd1 15%, transparent 30%);
-  background-color: #28e1bd;
+  background-image: radial-gradient(circle, #bc37d3 1%, #d176e1 15%, transparent 30%);
+  background-color: #bc37d3;
   background-color: #efefef;
   box-shadow: none; }
 
 .btn--primary {
-  background-image: radial-gradient(circle, #1abc9c 1%, #3ee4c4 15%, transparent 30%);
-  background-color: #1abc9c; }
+  background-image: radial-gradient(circle, #2196f3 1%, #6ab8f7 15%, transparent 30%);
+  background-color: #2196f3; }
   .btn--primary:hover {
-    background-color: #1dd2af; }
+    background-color: #39a1f4; }
 
 .btn--secondary {
-  background-image: radial-gradient(circle, #28e1bd 1%, #6bebd1 15%, transparent 30%);
-  background-color: #28e1bd; }
+  background-image: radial-gradient(circle, #bc37d3 1%, #d176e1 15%, transparent 30%);
+  background-color: #bc37d3; }
   .btn--secondary:hover {
-    background-color: #3ee4c4; }
+    background-color: #c34cd7; }
 
 .btn--accent {
   background-image: radial-gradient(circle, #ffeb3b 1%, #fff388 15%, transparent 30%);
@@ -739,7 +739,7 @@ body {
     background-color: #39a1f4; }
 
 a {
-  background: linear-gradient(to top, rgba(40, 225, 189, 0.8) 50%, rgba(255, 255, 255, 0) 50%);
+  background: linear-gradient(to top, rgba(188, 55, 211, 0.8) 50%, rgba(255, 255, 255, 0) 50%);
   background-size: 100% 200%;
   background-position: 0 10%;
   background-repeat: no-repeat;
@@ -790,7 +790,7 @@ header {
   width: 100%;
   padding-top: 10px;
   padding-bottom: 10px;
-  background: #1abc9c;
+  background: #2196f3;
   margin-bottom: 70px; }
   header h1, header h2, header h3 {
     color: white; }
@@ -909,7 +909,7 @@ header {
     cursor: pointer;
     transition: background 0.3s cubic-bezier(0.64, 0.09, 0.08, 1), color 0.3s cubic-bezier(0.64, 0.09, 0.08, 1); }
   #nav--super-vertical-responsive:checked + label {
-    background: #1abc9c;
+    background: #2196f3;
     color: white; }
   #nav--super-vertical-responsive:checked ~ .nav--super-vertical {
     transform: translateX(0); } }
@@ -945,13 +945,13 @@ header {
     cursor: pointer;
     transition: background 0.3s cubic-bezier(0.64, 0.09, 0.08, 1), color 0.3s cubic-bezier(0.64, 0.09, 0.08, 1); }
   #nav--horizontal-responsive:checked + label {
-    background: #1abc9c;
+    background: #2196f3;
     color: white; }
   #nav--horizontal-responsive:checked ~ .nav--horizontal {
     transform: translateY(0); } }
 
 .nav--vertical a, .nav--horizontal a {
-  color: #1abc9c;
+  color: #2196f3;
   background: white;
   padding: 10px;
   transition: none;
@@ -997,7 +997,7 @@ ol {
 footer {
   display: block;
   width: 100%;
-  background: #28e1bd;
+  background: #bc37d3;
   padding-top: 20px;
   padding-bottom: 20px; }
 
@@ -1117,7 +1117,7 @@ input[id*="modal-"] {
 .tabs label {
   cursor: pointer;
   color: rgba(255, 255, 255, 0.8);
-  background-color: #1abc9c;
+  background-color: #2196f3;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
@@ -1160,20 +1160,20 @@ input[type="email"], input[type="text"], input[type="password"], input[type="tex
   display: block;
   border: none;
   padding: 10px 0;
-  border-bottom: solid 1px #1abc9c;
+  border-bottom: solid 1px #2196f3;
   will-change: background-position;
   transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #1abc9c 96%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #2196f3 96%);
   background-position: -200px 0;
   background-size: 200px 100%;
   background-repeat: no-repeat;
-  color: #0e6252; }
+  color: #0960a5; }
   input[type="email"]:focus, input[type="email"]:valid, input[type="text"]:focus, input[type="text"]:valid, input[type="password"]:focus, input[type="password"]:valid, input[type="textarea"]:focus, input[type="textarea"]:valid {
     box-shadow: none;
     outline: none;
     background-position: 0 0; }
     input[type="email"]:focus::-webkit-input-placeholder, input[type="email"]:valid::-webkit-input-placeholder, input[type="text"]:focus::-webkit-input-placeholder, input[type="text"]:valid::-webkit-input-placeholder, input[type="password"]:focus::-webkit-input-placeholder, input[type="password"]:valid::-webkit-input-placeholder, input[type="textarea"]:focus::-webkit-input-placeholder, input[type="textarea"]:valid::-webkit-input-placeholder {
-      color: #1abc9c;
+      color: #2196f3;
       font-size: 11px;
       transform: translateY(-20px);
       visibility: visible !important; }
@@ -1187,20 +1187,20 @@ input[type="checkbox"]:not(.modal-trigger):not(.toggle):not(#alert-check):not([i
     content: '';
     width: 16px;
     height: 16px;
-    border: solid 2px #1abc9c;
+    border: solid 2px #2196f3;
     border-radius: 3px;
     background: white;
     position: absolute; }
   input[type="checkbox"]:not(.modal-trigger):not(.toggle):not(#alert-check):not([id*="lightbox-"]):after {
     content: '✓';
     color: white;
-    background: #1abc9c;
+    background: #2196f3;
     position: absolute;
     top: 0;
     left: 0;
     width: 16px;
     height: 16px;
-    border: solid 2px #1abc9c;
+    border: solid 2px #2196f3;
     border-radius: 3px;
     display: inline-flex;
     align-items: center;
@@ -1225,12 +1225,12 @@ input[type="radio"] {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    border: solid 2px #1abc9c;
+    border: solid 2px #2196f3;
     display: inline-block;
     position: absolute;
     top: -2px;
     left: -2px;
-    background-image: radial-gradient(circle, #1abc9c 40%, white 50%);
+    background-image: radial-gradient(circle, #2196f3 40%, white 50%);
     background-size: 0;
     background-position: 50% 50%;
     background-repeat: no-repeat;
@@ -1809,10 +1809,10 @@ code {
   color: #212121; }
 
 .color--primary {
-  color: #1abc9c; }
+  color: #2196f3; }
 
 .color--secondary {
-  color: #28e1bd; }
+  color: #bc37d3; }
 
 .color--accent {
   color: #ffeb3b; }

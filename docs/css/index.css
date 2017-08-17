@@ -1,9 +1,4 @@
-@Raleway {
-    font-family: Raleway;
-    src: url('font/Raleway-Regular.ttf');
-}
-
 document
 {
-  font-family: Raleway;
+  background-color: black;
 }

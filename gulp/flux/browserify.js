@@ -2,7 +2,6 @@ var gulp        = require("gulp"),
     browserify  = require("browserify"),
     rename      = require("gulp-rename"),
     tap         = require('gulp-tap'),
-    globify     = require("require-globify"),
     util        = require("gulp-util"),
     size        = require("gulp-filesize");
 

@@ -1,4 +1,4 @@
 module.exports = {
     debug:true,
-    transform:["require-globify"]
+    transform:["bulkify"]
 };

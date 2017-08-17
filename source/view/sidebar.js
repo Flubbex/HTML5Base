@@ -1,22 +1,20 @@
-var SidebarView = fluxbuild.Backbone.View.extend({
-    initialize: function(data){
+var SidebarView = {
+    initialize: function(data) {
+      console.log("\t","\t","Sidebarview initialized")
       this.template   = data.template;
       this.model      = data.model;
-      this.navbutton  = fluxbuild.$(data.navid);
-
-      if (this.model)
-        this.render();
+      this.nav        = data.nav;
+      this.render();
 
     },
-    events:{
-      "click a":"hide"
+    events: {
+      "click a": "hide"
     },
-    hide:function(){
-      this.navbutton.checked = false;
+    hide: function() {
+      this.nav.checked = false;
     },
-    render: function(){
-      this.$el.html( this.template(this.model) );
+    render: function() {
+      this.$el.html(this.template(this.model));
     }
-});
-
+  };
 module.exports = SidebarView;

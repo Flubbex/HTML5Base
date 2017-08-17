@@ -1,23 +1,15 @@
-var assert      = require('assert'),
-    scale       = require("scaleapp"),
-    Sandbox     = require("../sandbox"),
-    PageModule  = require("../../source/module/page");
+var scale       = require("scaleapp");
+var assert      = require('assert');
+var pageModule  = require("../../source/module/page");
+var sandbox     = require("../sandbox");
 
 describe("pageModule",function(){
-  var sandbox    = Sandbox(new scale.Core(),"page",{},"page");
-  var pagemodule = PageModule(sandbox);
-
-  it('Should have a view', function() {
-    assert.equal(typeof(pagemodule.view),"object");
-  });
-
-  describe('PageModule.loadPage()', function() {
-    pagemodule.loadPage("home");
-    it('Should render a page', function() {
-      assert.equal(typeof(core),"object");
-    });
+  var core = new scale.Core(sandbox);
+  it("Should be instantiable as a module",function(){
+    core.register("page",pageModule);
+    return assert.equal(typeof(core._modules.page),"object");
   })
 
 })
 
-return sandbox;
+module.exports = pageModule;

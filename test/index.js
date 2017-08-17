@@ -4,20 +4,16 @@ var dom     = require('jsdom-global')();
 var all     = require("require-all");
 
 var app     = require("./core");
-var config  = require("./config");
-var sandbox = require("./sandbox");
+var modules = all(__dirname,"module");
 
 describe("Application",function(){
-  var modules = all(__dirname,"module");
-
-  describe('app.initialize()', function() {
-    var core = app.initialize(scale,sandbox,config,app.modules);
+  describe('app.setup()', function() {
+    var core = app.setup();
     it('Should return an application (core)', function() {
       assert.equal(typeof(core),"object");
     });
-    it('Should have started', function() {
+    it('Should have started the application', function() {
       assert.equal(app.started,true);
     });
   })
-
 })

@@ -8,8 +8,6 @@ var pageModule = function(sandbox) {
 
   return {
     init: function() {
-      console.log("\t","PageModule Started");
-
       this.sidebar = new SidebarView({
         el: "#sidebar",
         template: sandbox.template.sidebar,

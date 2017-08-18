@@ -8,19 +8,21 @@ var pageModule = function(sandbox) {
 
   return {
     init: function() {
+      console.log("\t","Starting PageModule");
+
       this.sidebar = new SidebarView({
         el: "#sidebar",
         template: sandbox.template.sidebar,
-        model: sandbox.model,
+        model: sandbox.config.get('about'),
         nav: sandbox.$("#nav--super-vertical-responsive")[0]
       });
 
       this.view = new PageView({
         el: "#page",
         template: sandbox.template.page,
-        model:    sandbox.model
+        model:    sandbox.config.get('about')
       });
-
+      
       sandbox.on("loadpage",this.loadPage,this);
 
       this.view.render("home");

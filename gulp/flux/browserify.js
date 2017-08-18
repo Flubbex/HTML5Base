@@ -12,9 +12,10 @@ gulp.task("browserify",function(){
       .pipe(tap(function(file){
         console.log("\t\t","browserifying",file.path.slice(
                                     file.path.lastIndexOf("/")+1))
-        file.contents = browserify(file.path,config.browserify).bundle()
+        file.contents = browserify(file.path,config.browserify)
+                                  .bundle()
       }))
       .pipe(rename(config.select.app))
-      .pipe(size())
       .pipe(gulp.dest(config.path.dist_js))
+      .pipe(size())
 });

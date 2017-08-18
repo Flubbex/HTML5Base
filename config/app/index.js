@@ -1,5 +1,5 @@
 module.exports = {
-  name:       "fluxbuild",
-  version:    "1.0.0",
-  sandbox:    require("./sandbox")
+  about:      require("./about"),
+  module:     require("./module"),
+  core:       require("./core")
 }

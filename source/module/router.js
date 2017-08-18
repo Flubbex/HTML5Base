@@ -12,12 +12,12 @@ var routerModule = function(sandbox) {
 
   return {
     init: function() {
-      console.log("\t","\t","RouterModule Started");
+      console.log("\t","Starting RouterModule");
       this.router = new Router();
       sandbox.Backbone.history.start();
     },
     destroy: function() {
-      console.log("\t","\t","RouterModule Destroyed");
+      console.log("\t","Destroying RouterModule");
     }
   };
 };

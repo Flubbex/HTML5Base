@@ -8,7 +8,7 @@ module.exports = {
     hbs:    "*.hbs",
     index:  "index.js",
     bundle: "bundle.js",
-    app:    app.name+".js",
+    app:    app.about.filename+".js",
     surface_scss:  "surface_styles.scss",
     surface_css:  "surface_styles.css"
 }

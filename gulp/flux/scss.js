@@ -15,6 +15,8 @@ gulp.task('build_scss', function(){
 //Minify dist/css and publish to docs/css
 gulp.task('scss',gulp.series('build_scss',function(){
   return gulp.src(config.path.dist_css+config.select.surface_css)
+  .pipe(size())
   .pipe(cleanCSS({compatibility: 'ie8'}))
+  .pipe(size())
 	.pipe(gulp.dest(config.path.doc_css))
 }))

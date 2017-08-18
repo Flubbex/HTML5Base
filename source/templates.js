@@ -16,7 +16,7 @@ module.exports = function (Handlebars){var container = {}; container["layout"] =
 container["sidebar"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return "<div class=\"g--12 logo-area no-margin-vertical\">\n  <h4 class=\"no-margin-vertical\">"
+  return "<div class=\"logo-area no-margin-vertical\">\n  <img class=\"g--2 no-margin-vertical\" src=\"images/logo.png\">\n  <h4 class=\"g--6 m--1 no-margin-vertical\">"
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"name","hash":{},"data":data}) : helper)))
     + "</h4>\n</div>\n<nav class=\"g--12 no-margin-vertical\" role=\"navigation\">\n  <a href=\"#home\">Overview</a>\n\n  <div class=\"nav-collapsible\">\n    <input type=\"checkbox\" id=\"nav-documentation\">\n    <label for=\"nav-documentation\">\n        Documentation\n      </label>\n    <div class=\"nav-collapsible-links\">\n      <a href=\"#structure\">Project Structure</a>\n      <a href=\"#workflow\">Workflow</a>\n      <a href=\"#gulp\">Gulp Tasks</a>\n      <a href=\"#documentation\">Generating Documentation</a>\n      <a href=\"#handlebars\">Handlebars Reference</a>\n      <a href=\"#surface\">Surface CSS Reference</a>\n      <a href=\"#external\">External Information</a>\n    </div>\n  </div>\n  <a href=\"#about\">About</a>\n</nav>\n";
 },"useData":true});

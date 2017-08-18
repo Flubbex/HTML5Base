@@ -1,16 +1,16 @@
 var include   = require("./include.js");
 
-//Sandbox
-module.exports = function(core, instanceid, options, moduleid) {
+//Sandbox contains a generalized API for your application
+var sandbox = function(core, instanceid, options, moduleid) {
    //provides the Mediator methods 'on', 'emit', etc.
    //Obsoleted by atom-js (Flubbex)
-  //core._mediator.installTo(this);
+  core._mediator.installTo(this);
 
   //Assign includes to sandbox
   Object.assign(this,include);
 
-  //Provides Mediator functions and more
-  Object.assign(this,this.atom());
+  //Provides Mediator functions and more (Borked?)
+  //Object.assign(this,this.atom());
 
   //Some data
   this.model = {
@@ -36,3 +36,5 @@ module.exports = function(core, instanceid, options, moduleid) {
 
 
 };
+
+module.exports = sandbox;

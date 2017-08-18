@@ -65,7 +65,6 @@ module.exports = {
     var pageReady = function(){
       module.exports.start();
       console.log("Finished Setup [~"+(Date.now()-timespan)+"ms]");
-
     }
 
     window.onDOMContentLoaded = pageReady;

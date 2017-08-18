@@ -5,8 +5,10 @@ var gulp        = require("gulp"),
 //TODO; write a JSON report to /docs
 gulp.task('lint', function()
 {
-    return gulp.src(config.path.source+(util.env.file||config.select.all))
-    .pipe(jshint())
-    .pipe(jshint.reporter("jshint-stylish",{verbose:true}))
+    var target = util.env.file ? config.path.source+util.env.file
+                                  : [config.path.source+"**/**.js","!source/templates.js"];
+    return gulp.src(target)
+    .pipe(jshint({asi:true}))
+    .pipe(jshint.reporter("jshint-stylish",{verbose:false}))
     .pipe(jshint.reporter("fail"))
 });

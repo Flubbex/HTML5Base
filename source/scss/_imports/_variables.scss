@@ -1,3 +1,10 @@
+//--Modified by Flubbex for fluxBuild--
+
+//Include font-awesome iconography
+@import '../font-awesome/font-awesome.scss';
+
+//--End Modification--
+
 @import './colors';
 
 // Type
@@ -13,6 +20,24 @@ $line-height: 130%;
 $primary: $blue;
 $secondary: lighten($purple, 10%);
 $accent: $yellow;
+
+//--Modified by Flubbex--
+
+//Globalize colorscheme for extension purposes
+//E.g. coloring future widgets accordingly
+.bg--primary
+{
+  background-color: $primary;
+}
+.bg--secondary
+{
+  background-color: $secondary;
+}
+.bg--accent
+{
+  background-color: $accent;
+}
+//--End Modification--
 
 $body-background: $paper;
 

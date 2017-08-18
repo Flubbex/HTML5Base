@@ -1,10 +1,20 @@
 console.log("[Entrypoint @ " + new Date().toString().slice(16, 24) + "]");
 
-var bulk = require('bulk-require'),
-  scale = require("scaleapp"),
-  config = require("../config/app"),
-  sandbox = require("./sandbox"),
-  modules = bulk(__dirname + "/module", "*.js");
+var bulk    = require('bulk-require'),
+  scale     = require("scaleapp"),
+  config    = require("../config/app"),
+  sandbox   = require("./sandbox"),
+  modules   = bulk(__dirname + "/module", "*.js");
+  now       = require("performance-now"),
+  _time      = now();
+
+function elapsed(passed){
+  return now()-passed;
+}
+
+function time(){
+  return elapsed(_time).toString().slice(0,4);
+}
 
 function initialize(scale, sandbox, config, modules) {
   if (!config)
@@ -48,7 +58,7 @@ function start() {
 
 function pageReady() {
   module.exports.start();
-  console.log("Finished Setup [~" + "ms]");
+  console.log("Finished Setup [~" +time()+ "ms]");
 };
 
 function setup() {
@@ -65,7 +75,7 @@ function setup() {
   window.onDOMContentLoaded = this.pageReady;
   window.onload = this.pageReady;
 
-  console.log("Finished Initialization [~" + "ms]");
+  console.log("Finished Initialization [~" +time()+ "ms]");
 
   return this.app;
 };

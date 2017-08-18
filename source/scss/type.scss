@@ -1,10 +1,9 @@
 @import './_imports/_variables';
 //--Modified by Flubbex for fluxBuild--
 
-//Changed http to https to prevent mixedmedia errors
-//when hosted on a secure (https) endpoint.
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700|Gentium+Book+Basic:400,700);
-
+//Changed to local font file due to mixed media errors when serving from http.
+//Also, better load times.
+@import './_imports/_fonts';
 //--End modification--
 
 div, p, h1, h2, h3, h4, h5, h6, a, input, label, header, aside, menu, body {

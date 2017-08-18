@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700|Gentium+Book+Basic:400,700);
 html, body {
   width: 100%; }
 
@@ -7610,6 +7609,14 @@ button {
 
 .bg--accent {
   background-color: #ffeb3b; }
+
+@font-face {
+  font-family: 'Roboto';
+  src: url("../font/Roboto-Regular.woff2") format("woff2"); }
+
+@font-face {
+  font-family: 'Gentium Book Basic';
+  src: url("../font/GentiumBookBasic.woff2") format("woff2"); }
 
 div, p, h1, h2, h3, h4, h5, h6, a, input, label, header, aside, menu, body {
   font-family: Roboto, sans-serif;

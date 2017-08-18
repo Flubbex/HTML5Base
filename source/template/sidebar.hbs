@@ -1,14 +1,20 @@
-<div class="logo-area no-margin-vertical">
+<div class="logo-area no-margin-vertical fade-in-from-top">
   <img class="g--2 no-margin-vertical" src="images/logo.png">
   <h4 class="g--6 m--1 no-margin-vertical">{{name}}</h4>
 </div>
-<nav class="g--12 no-margin-vertical" role="navigation">
-  <a href="#home">Overview</a>
+<nav class="g--12 no-margin-vertical fade-in-from-left"
+     role="navigation">
 
-  <div class="nav-collapsible">
+  <a href="#home">
+    Home
+    <i class="fa fa-home fa-2x right" aria-hidden="true"></i>
+  </a>
+
+  <div class="nav-collapsible no-margin-vertical">
     <input type="checkbox" id="nav-documentation">
     <label for="nav-documentation">
         Documentation
+        <i class='fa fa-info fa-2x right'></i>
       </label>
     <div class="nav-collapsible-links">
       <a href="#structure">Project Structure</a>
@@ -20,5 +26,9 @@
       <a href="#external">External Information</a>
     </div>
   </div>
-  <a href="#about">About</a>
+
+  <a href="#about">
+    About
+    <i class='fa fa-user fa-2x right'></i>
+  </a>
 </nav>

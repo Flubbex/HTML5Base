@@ -1,4 +1,20 @@
-document
+html
 {
-  background-color: black;
+  background-color: paper;
+}
+
+body
+{
+  /*display: none;*/
+}
+
+@keyframes fadeaway {
+    0% {opacity:1;}
+    100% {opacity:0;}
+}
+
+i:hover
+{
+   animation-name: fadeaway;
+   animation-duration: 3s;
 }

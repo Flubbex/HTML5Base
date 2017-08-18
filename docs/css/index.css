@@ -3,13 +3,7 @@ html
   background-color: paper;
 }
 
-@keyframes fadeaway {
-    0% {opacity:1;}
-    100% {opacity:0;}
-}
-
 i:hover
 {
-   animation-name: fadeaway;
-   animation-duration: 3s;
+  color: snow;
 }

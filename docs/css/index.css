@@ -3,11 +3,6 @@ html
   background-color: paper;
 }
 
-body
-{
-  /*display: none;*/
-}
-
 @keyframes fadeaway {
     0% {opacity:1;}
     100% {opacity:0;}

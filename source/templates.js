@@ -5,7 +5,7 @@ module.exports = function (Handlebars){var container = {}; container["layout"] =
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing;
 
-  return "<header class=\"container--wrap no-margin-vertical\">\n    <h1 class=\"m--1 g--4 g-s--11 docsHeader\">"
+  return "<header class=\"container--wrap no-margin-vertical\">\n    <h1 class=\"m--1 g--4 g-s--11 docsHeader no-margin-vertical\">"
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "</h1>\n"
     + ((stack1 = (helpers.block || (depth0 && depth0.block) || alias2).call(alias1,"header",{"name":"block","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")

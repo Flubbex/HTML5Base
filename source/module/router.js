@@ -1,25 +1,27 @@
-var routerModule = function(sandbox) {
+var Stapes = require("stapes");
 
-  var Router = sandbox.Backbone.Router.extend({
-      routes: {
-        ":query":                 "loadPage",
-      },
-      loadPage: function(query) {
-        sandbox.emit("loadpage",query);
-      }
+var routerModule = Stapes.subclass({
+  constructor: function(app) {
+    this.Router = app.Backbone.Router.extend({
+        routes: {
+          ":query": "loadPage",
+        },
+        loadPage:app.util.delegated(this,'loadPage',app)
+      });
 
-    });
-
-  return {
-    init: function() {
-      console.log("\t","Starting RouterModule");
-      this.router = new Router();
-      sandbox.Backbone.history.start();
-    },
-    destroy: function() {
-      console.log("\t","Destroying RouterModule");
-    }
-  };
-};
+    app.on("start",app.util.delegated(this,'start',app));
+  },
+  loadPage: function(app,query) {
+    app.emit("loadpage", query);
+  },
+  start: function(app) {
+    console.log("\t", "Starting RouterModule","[~"+app.util.perfnow()+"ms]");
+    this.router = new this.Router();
+    app.Backbone.history.start();
+  },
+  destroy: function() {
+    console.log("\t", "Destroying RouterModule");
+  }
+})
 
 module.exports = routerModule;

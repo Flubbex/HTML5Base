@@ -1,6 +1,5 @@
 var SidebarView = {
     initialize: function(data) {
-      console.log("\t","\t","Sidebarview initialized")
       this.template   = data.template;
       this.model      = data.model;
       this.nav        = data.nav;

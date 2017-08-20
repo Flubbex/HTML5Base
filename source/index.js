@@ -1,98 +1,54 @@
 console.log("[Entrypoint @ " + new Date().toString().slice(16, 24) + "]");
 
-var bulk    = require('bulk-require'),
-  scale     = require("scaleapp"),
-  config    = require("../config/app"),
-  sandbox   = require("./sandbox"),
-  modules   = bulk(__dirname + "/module", "*.js");
-  now       = require("performance-now"),
-  _time      = now();
+var bulk = require('bulk-require'),
+  Application = require("./app"),
+  config = require("../config/app"),
+  include = require("./include"),
+  modules = bulk(__dirname + "/module", "*.js");
 
-function elapsed(passed){
-  return now()-passed;
-}
-
-function time(){
-  return elapsed(_time).toString().slice(0,4);
-}
-
-function initialize(scale, sandbox, config, modules) {
-  if (!config)
-    throw new Error("Initialize Error: Invalid config passed to initialize");
-  if (!scale)
-    throw new Error("Initialize Error: Invalid scaleapp library passed to initialize");
-  if (!sandbox)
-    throw new Error("Initialize Error: Invalid sandbox passed to initialize");
-  if (!modules)
-    throw new Error("Initialize Error: Invalid module hash passed to initialize");
-
-  console.log("Initializing Application");
-
-  var core         = new scale.Core(sandbox,config.core);
-  var moduleconfig = Object.assign({about:config.about},
-                                   config.module);
-
-  Object.keys(modules).map(function(name, value) {
-    console.log("\t", "Registering module", name)
-    core.register(name, modules[name],moduleconfig);
-  })
-
-  return core;
+/**
+  Used internally to instantiate an application using provided arguments and returns it.
+ *
+   @param {object} application The object on which to call the function.
+   @param {object} config Configuration file
+   @param {object} include Hashmap of includables ( libraries e.g. ).
+   @param {object} modules Hashmap of modules.
+   @returns {object} An instantiated application
+*/
+function initialize(application, config, include, modules) {
+  return new application(config, include, modules);
 };
 
-function start() {
-  if (this.started) return;
-  if (!this.app)
-    throw new Error("Start Error: Application not initialized")
-
-  console.log("Starting Application")
-
-  this.app.start();
-
-  this.started = true;
-  window.onDOMContentLoaded = null;
-  window.onload = null;
-
-  return this.app;
-};
-
-function pageReady() {
-  module.exports.start();
-  console.log("Finished Setup [~" +time()+ "ms]");
-};
-
-function setup() {
+/**
+  Initializes an application using supplied arguments.
+  Usually called automatically.
+ *
+   @param {object} application The object on which to call the function.
+   @param {object} config Configuration file
+   @param {object} include Hashmap of includables ( libraries e.g. ).
+   @param {object} modules Hashmap of modules.
+   @returns {object} An instantiated application
+*/
+function setup(application, config, include, modules) {
   if (this.started)
     console.warn("Warning: App setup called while already started")
 
-  console.log("Application Setup");
+  console.log("Initializing Application");
 
-  this.app = this.initialize(this.scale,
-    this.sandbox,
-    this.config,
-    this.modules);
+  this.app = this.initialize(application, config, include, modules);
 
-  window.onDOMContentLoaded = this.pageReady;
-  window.onload = this.pageReady;
-
-  console.log("Finished Initialization [~" +time()+ "ms]");
+  console.log("Finished Initialization [~" + include.util.perfnow() + "ms]");
 
   return this.app;
 };
 
 module.exports = {
-  app:        null,
-  started:    false,
-  scale:      scale,
-  config:     config,
-  sandbox:    sandbox,
-  modules:    modules,
+  app: null,
+  started: false,
   initialize: initialize,
-  start:      start,
-  pageReady:  pageReady,
-  setup:      setup
+  setup: setup
 };
 
 //Autostarter for browsers
 if (typeof(window) !== "undefined")
-  window.app = module.exports.setup();
+  window.app = module.exports.setup(Application, config, include, modules);

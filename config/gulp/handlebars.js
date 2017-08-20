@@ -4,7 +4,5 @@ module.exports = {
   declare:{
     root:"container"
   },
-  handlebars:{
-
-  }
+  out:"template.js"
 }

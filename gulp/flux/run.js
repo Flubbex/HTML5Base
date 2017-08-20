@@ -7,7 +7,7 @@ var gulp        = require("gulp"),
 gulp.task("run", function()
 {
   dom();
-  var target = util.env.cmd || "../../source/index.js";
+  var target = "../../source/"+(util.env.file|| "index.js");
   require(target);
 
   return gulp.src('*.js', {read: false})

@@ -1,29 +1,31 @@
-var pageViewData    = require("../view/page");
-var sidebarViewData = require("../view/sidebar");
+var Stapes          = require("stapes"),
+￼
+    pageViewData    = require("../view/page"),
+    sidebarViewData = require("../view/sidebar");
 
-var pageModule = function(sandbox) {
+var pageModule = Stapes.subclass({
+    constructor:function(app) {
+      this.PageView    = app.Backbone.View.extend(pageViewData);
+      this.SidebarView = app.Backbone.View.extend(sidebarViewData);
 
-  var PageView       = sandbox.Backbone.View.extend(pageViewData);
-  var SidebarView    = sandbox.Backbone.View.extend(sidebarViewData);
+      app.on("start",app.util.delegated(this,'start',app));
+      app.on("loadpage",this.loadPage,this);
+    },
+    start: function(app) {
+      console.log("\t","Starting PageModule","[~"+app.util.perfnow()+"ms]");
 
-  return {
-    init: function() {
-      console.log("\t","Starting PageModule");
-
-      this.sidebar = new SidebarView({
+      this.sidebar = new this.SidebarView({
         el: "#sidebar",
-        template: sandbox.template.sidebar,
-        model: sandbox.config.get('about'),
-        nav: sandbox.$("#nav--super-vertical-responsive")[0]
+        template: app.template.sidebar,
+        model: app.config.about,
+        nav: app.$("#nav--super-vertical-responsive")[0]
       });
 
-      this.view = new PageView({
+      this.view = new this.PageView({
         el: "#page",
-        template: sandbox.template.page,
-        model:    sandbox.config.get('about')
+        template: app.template.page,
+        model:    app.config.about
       });
-      
-      sandbox.on("loadpage",this.loadPage,this);
 
       this.view.render("home");
     },
@@ -33,7 +35,6 @@ var pageModule = function(sandbox) {
     destroy: function() {
       console.log("\t","PageModule Destroyed");
     }
-  };
-};
+});
 
 module.exports = pageModule;

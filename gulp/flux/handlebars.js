@@ -24,7 +24,7 @@ gulp.task('handlebars', function()
         return name;
         }
         })))
-    .pipe(concat('templates.js'))
+    .pipe(concat(config.handlebars.out))
     .pipe(wrap("module.exports = function (Handlebars){var container = {}; <%= contents %>; return container;}"))
     .pipe(size())
     .pipe(gulp.dest(config.path.source))

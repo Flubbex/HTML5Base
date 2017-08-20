@@ -1,5 +1,6 @@
 var gulp        = require("gulp"),
     sass        = require('gulp-sass'),
+    size        = require("gulp-filesize"),
     cleanCSS    = require('gulp-clean-css');
 
 //Build SCSS to dist/css

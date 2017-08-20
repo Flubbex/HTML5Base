@@ -48,6 +48,7 @@
     "performance-now": "^2.1.0",
     "require-all": "^2.2.0",
     "scaleapp": "^0.4.4",
+    "stapes": "^1.0.0",
     "underscore": "^1.8.3",
     "watchify": "^3.9.0",
     "zest": "^0.1.3"

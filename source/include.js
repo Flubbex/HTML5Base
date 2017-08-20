@@ -1,8 +1,10 @@
-//Add your own libraries here
+var bulk = require("bulk-require");
+    util = bulk(__dirname+"/util","*.js");
+
 module.exports = {
-  $:          require("zest"),
-  Handlebars: require("handlebars"),
-  Backbone:   require("backbone"),
-  atom:       require("atom-js"),
-  template:   require("./templates")
+  $:require("zest"),
+  Backbone:require("backbone"),
+  Handlebars:require("handlebars"),
+  template:require("./template"),
+  util:util,
 }

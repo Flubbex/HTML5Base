@@ -1,42 +1,40 @@
-var Stapes  = require("stapes"),
-    layouts = require('handlebars-layouts');
-
 //Your application
-var Application = Stapes.subclass({
-  constructor: function(config,include,modules) {
-    //Assigns to the current application:
-    Object.assign(this,
-                  include,           //Some libraries
-                  {config:config,    //Some config options (app.config)
-                  modules:modules}); //some modules (app.modules)
+var Application = function(config, include, modules) {
 
-    //Instantiate templates by injecting Handlebars
-    this.template = this.template(this.Handlebars);
+  //Instantiate templates by injecting Handlebars
+  include.template = include.template(include.Handlebars);
 
-    //Handlebar setup for layout support
-    this.Handlebars.registerHelper(layouts(this.Handlebars));
+  //Handlebar setup for layout support
+  include.Handlebars.registerHelper(include.layouts(include.Handlebars));
 
-    //Register layout partial
-    this.Handlebars.registerPartial('layout', this.template['layout']);
+  //Register layout partial
+  include.Handlebars.registerPartial('layout', include.template['layout']);
 
-    //Start when domcontent is loaded
-    window.addEventListener("load",
-                             this.util.delegated(this,'start'),
-                             {once:true});
-
-    //Initialize all the modules
-    var application     = this;
-    var modules         = this.modules;
-    application.modules = Object.keys(modules)
-                          .map(function(name){
-      return new modules[name](application);
+  //Start all the modules that need starting
+  window.addEventListener("DOMContentLoaded",
+    function() {
+      Object.keys(modules).map(function(name) {
+        if (modules[name].start && typeof(modules[name]).start==='function')
+          modules[name].start()
+      });
     });
-  },
-  start:function(){
-    console.log("Application Started","[~"+this.util.perfnow()+"ms]");
-    this.emit("start");
-  }
 
-});
+  modules.router.on("loadPage", function(name){
+    console.log("Loading page:",name,"[~" + include.util.perfnow() + "ms]")
+    modules.page.loadPage(name);
+  });
+
+  return {
+    atom:     include.atom,
+    $:        include.$,
+    template: include.template,
+    util:     util,
+    modules:  modules,
+    start:    function() {
+      console.log("Application Started", "[~" + include.util.perfnow() + "ms]");
+      include.emit("start");
+    }
+  }
+};
 
 module.exports = Application;

@@ -1,10 +1,10 @@
 console.log("[Entrypoint @ " + new Date().toString().slice(16, 24) + "]");
 
-var bulk = require('bulk-require'),
+var bulk      = require('bulk-require'),
   Application = require("./app"),
-  config = require("../config/app"),
-  include = require("./include"),
-  modules = bulk(__dirname + "/module", "*.js");
+  config      = require("../config/app"),
+  include     = require("./include"),
+  modules     = bulk(__dirname + "/module", "*.js");
 
 /**
   Used internally to instantiate an application using provided arguments and returns it.
@@ -16,7 +16,11 @@ var bulk = require('bulk-require'),
    @returns {object} An instantiated application
 */
 function initialize(application, config, include, modules) {
-  return new application(config, include, modules);
+  var _modules = {};
+  //Initialize modules
+  for (var attr in modules)
+    _modules[attr] = include.emitter(modules[attr](config, include));
+  return include.emitter(application(config, include, _modules));
 };
 
 /**
@@ -33,7 +37,7 @@ function setup(application, config, include, modules) {
   if (this.started)
     console.warn("Warning: App setup called while already started")
 
-  console.log("Initializing Application");
+  console.log("Initializing Application","[~" + include.util.perfnow() + "ms]");
 
   this.app = this.initialize(application, config, include, modules);
 

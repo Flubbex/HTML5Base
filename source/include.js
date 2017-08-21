@@ -3,8 +3,9 @@ var bulk = require("bulk-require");
 
 module.exports = {
   $:require("zest"),
-  Backbone:require("backbone"),
   Handlebars:require("handlebars"),
+  layouts:require('handlebars-layouts'),
   template:require("./template"),
+  emitter:require("./lib/fluxmitter"),
   util:util,
 }

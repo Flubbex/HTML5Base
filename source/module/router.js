@@ -1,27 +1,28 @@
-var Stapes = require("stapes");
+var Backbone = require("backbone");
 
-var routerModule = Stapes.subclass({
-  constructor: function(app) {
-    this.Router = app.Backbone.Router.extend({
-        routes: {
-          ":query": "loadPage",
-        },
-        loadPage:app.util.delegated(this,'loadPage',app)
-      });
+var routerModule  = function(config,include) {
 
-    app.on("start",app.util.delegated(this,'start',app));
-  },
-  loadPage: function(app,query) {
-    app.emit("loadpage", query);
-  },
-  start: function(app) {
-    console.log("\t", "Starting RouterModule","[~"+app.util.perfnow()+"ms]");
-    this.router = new this.Router();
-    app.Backbone.history.start();
-  },
-  destroy: function() {
-    console.log("\t", "Destroying RouterModule");
-  }
-})
+  console.log("Initializing RouterModule","[~" + include.util.perfnow() + "ms]")
 
-module.exports = routerModule;
+  var Router      = Backbone.Router.extend({
+    routes: {
+      ":query": "loadPage",
+    }
+  });
+
+  return {
+    start: function() {
+      console.log("\t", "Starting RouterModule", "[~" + include.util.perfnow() + "ms]");
+      this.router = new Router(this);
+      this.router.on('route:loadPage',
+                    include.util.delegated(this,'emit','loadPage'),
+                    this);
+      Backbone.history.start();
+    },
+    destroy: function() {
+      console.log("\t", "Destroying RouterModule");
+    }
+  };
+};
+
+module.exports    = routerModule;

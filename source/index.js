@@ -1,10 +1,15 @@
-console.log("[Entrypoint @ " + new Date().toString().slice(16, 24) + "]");
+var perfnow   = require("./util/perfnow");
+console.log("Entrypoint @ ",new Date().toString().slice(16, 24),"[~"+perfnow()+"ms]");
 
 var bulk      = require('bulk-require'),
-  Application = require("./app"),
   config      = require("../config/app"),
-  include     = require("./include"),
-  modules     = bulk(__dirname + "/module", "*.js");
+  Bottle      = require("bottlejs"),
+  Application = require("./app"),
+  content     = bulk(__dirname , ["service/*.js",
+                                  "provider/*.js",
+                                  "factory/*.js",
+                                  "decorator/*.js",
+                                  "middleware/*.js"]);
 
 /**
   Used internally to instantiate an application using provided arguments and returns it.
@@ -15,12 +20,28 @@ var bulk      = require('bulk-require'),
    @param {object} modules Hashmap of modules.
    @returns {object} An instantiated application
 */
-function initialize(application, config, include, modules) {
-  var _modules = {};
-  //Initialize modules
-  for (var attr in modules)
-    _modules[attr] = include.emitter(modules[attr](config, include));
-  return include.emitter(application(config, include, _modules));
+function initialize(app,config,content) {
+  var bottle = Bottle(config.about.filename);
+  var dependencies = [];
+
+  Object.keys(content).map(function(type){
+    var subset = content[type];
+    Object.keys(subset).map(function(name){
+      var realname = name;
+      var name     = subset[name].name||name;
+
+      console.log("\t","Bottling",type,name,"[~" + perfnow() + "ms]");
+
+      bottle[type](name,subset[realname]);
+      dependencies.push(name);
+    })
+  })
+
+  var appdata = [config.about.filename,app]//.concat(dependencies);
+
+  bottle.factory.apply(bottle,appdata);
+
+  return bottle;
 };
 
 /**
@@ -33,26 +54,30 @@ function initialize(application, config, include, modules) {
    @param {object} modules Hashmap of modules.
    @returns {object} An instantiated application
 */
-function setup(application, config, include, modules) {
+function setup(application, config, content) {
   if (this.started)
     console.warn("Warning: App setup called while already started")
 
-  console.log("Initializing Application","[~" + include.util.perfnow() + "ms]");
+  console.log("Initializing Application","[~" + perfnow() + "ms]");
 
-  this.app = this.initialize(application, config, include, modules);
+  this.app = this.initialize(application, config, content);
 
-  console.log("Finished Initialization [~" + include.util.perfnow() + "ms]");
+  window.addEventListener("DOMContentLoaded",function(){
+    this.app.container.fluxbuild.start();
+  });
+
+  console.log("Finished Application Initialization [~" + perfnow() + "ms]");
 
   return this.app;
 };
 
 module.exports = {
-  app: null,
-  started: false,
+  app:        null,
+  started:    false,
   initialize: initialize,
-  setup: setup
+  setup:      setup
 };
 
 //Autostarter for browsers
 if (typeof(window) !== "undefined")
-  window.app = module.exports.setup(Application, config, include, modules);
+  window.app = module.exports.setup(Application, config, content);

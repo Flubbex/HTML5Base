@@ -22,6 +22,7 @@
     "bulkify": "^1.4.2",
     "del": "^3.0.0",
     "depcheck": "^0.6.7",
+    "exoskeleton": "^0.7.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-clean-css": "^3.4.2",
     "gulp-concat": "^2.6.1",
@@ -54,5 +55,8 @@
     "watchify": "^3.9.0",
     "zest": "^0.1.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "disc": "^1.3.2",
+    "gulp-data": "^1.2.1"
+  }
 }

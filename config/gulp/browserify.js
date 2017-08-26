@@ -1,4 +1,5 @@
 module.exports = {
     debug:true,
-    transform:["bulkify"]
+    transform:["bulkify"],
+    fullPaths:true
 };

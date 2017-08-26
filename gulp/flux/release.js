@@ -6,6 +6,6 @@ var gulp        = require("gulp"),
 gulp.task("release", function()
 {
     return gulp.src(config.path.dist+config.select.bundle)
-    .pipe(rename(config.select.app))
+    .pipe(rename(config.select.app_version))
     .pipe(gulp.dest(config.path.release))
 });

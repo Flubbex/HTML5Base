@@ -1,5 +1,5 @@
 var appconfig = require("../../config/app");
 
-module.exports = function(){
+module.exports = function config(){
   return appconfig;
 };

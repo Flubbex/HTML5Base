@@ -1,15 +1,14 @@
-var scale       = require("scaleapp");
-var assert      = require('assert');
-var pageModule  = require("../../source/module/page");
-var sandbox     = require("../sandbox");
+var scale        = require("scaleapp");
+var assert       = require('assert');
+var Bottle       = require("bottlejs");
+var pageFactory  = require("../../source/factory/page");
 
 describe("pageModule",function(){
-  var core = new scale.Core(sandbox);
-  it("Should be instantiable as a module",function(){
-    core.register("page",pageModule);
-    return assert.equal(typeof(core._modules.page),"object");
+  var bottle = Bottle().factory('test',pageFactory);
+  it("Should be instantiable as a factory",function(){
+    return assert.equal(typeof(bottle),"object");
   })
 
 })
 
-module.exports = pageModule;
+module.exports = pageFactory;

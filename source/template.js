@@ -1,24 +1,28 @@
 module.exports = function (Handlebars){var container = {}; container["layout"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    return "";
-},"3":function(container,depth0,helpers,partials,data) {
-    return "    Content\n";
-},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing;
 
   return "<header class=\"container--wrap no-margin-vertical\">\n    <h1 class=\"m--1 g--12 no-margin-vertical\">\n      "
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "\n    </h1>\n"
-    + ((stack1 = (helpers.block || (depth0 && depth0.block) || alias2).call(alias1,"header",{"name":"block","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.block || (depth0 && depth0.block) || alias2).call(alias1,"header",{"name":"block","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</header>\n  <div class=\"g--10 m--1\">\n"
-    + ((stack1 = (helpers.block || (depth0 && depth0.block) || alias2).call(alias1,"page",{"name":"block","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.block || (depth0 && depth0.block) || alias2).call(alias1,"page",{"name":"block","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "  </div>\n</div>\n";
+},"2":function(container,depth0,helpers,partials,data) {
+    return "";
+},"4":function(container,depth0,helpers,partials,data) {
+    return "    Content\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return ((stack1 = (helpers.block || (depth0 && depth0.block) || helpers.helperMissing).call(depth0 != null ? depth0 : (container.nullContext || {}),"fullpage",{"name":"block","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"useData":true});
 container["sidebar"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper;
 
   return "<div class=\"logo-area no-margin-vertical fade-in-from-top\">\n  <img class=\"g--2 no-margin-vertical\" src=\"images/logo.png\">\n  <h4 class=\"g--6 m--1 no-margin-vertical\">"
     + container.escapeExpression(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"name","hash":{},"data":data}) : helper)))
-    + "</h4>\n</div>\n<nav class=\"g--12 no-margin-vertical fade-in-from-left\"\n     role=\"navigation\">\n\n  <a href=\"#home\">\n    Home\n    <i class=\"fa fa-home fa-2x right\" aria-hidden=\"true\"></i>\n  </a>\n\n  <div class=\"nav-collapsible no-margin-vertical\">\n    <input type=\"checkbox\" id=\"nav-documentation\">\n    <label for=\"nav-documentation\">\n        Documentation\n        <i class='fa fa-info fa-2x right'></i>\n      </label>\n    <div class=\"nav-collapsible-links\">\n      <a href=\"#structure\">Project Structure</a>\n      <a href=\"#workflow\">Workflow</a>\n      <a href=\"#gulp\">Gulp Tasks</a>\n      <a href=\"#documentation\">Generating Documentation</a>\n      <a href=\"#handlebars\">Handlebars Reference</a>\n      <a href=\"#surface\">Surface CSS Reference</a>\n      <a href=\"#external\">External Information</a>\n    </div>\n  </div>\n\n  <a href=\"#about\">\n    About\n    <i class='fa fa-user fa-2x right'></i>\n  </a>\n</nav>\n";
+    + "</h4>\n</div>\n<nav class=\"g--12 no-margin-vertical fade-in-from-left\"\n     role=\"navigation\">\n\n  <a href=\"#home\">\n    <i class=\"fa fa-home fa-2x\"></i>\n    <span class=\"m--1\">Home</span>\n  </a>\n\n  <div class=\"nav-collapsible no-margin-vertical\">\n    <input type=\"checkbox\" id=\"nav-documentation\">\n    <label for=\"nav-documentation\">\n        <i class='fa fa-file-text fa-2x'></i>\n        <span class=\"m--1\">Documentation<span>\n      </label>\n    <div class=\"nav-collapsible-links\">\n      <a href=\"#structure\">Project Structure</a>\n      <a href=\"#workflow\">Workflow</a>\n      <a href=\"#gulp\">Gulp Tasks</a>\n      <a href=\"#documentation\">Generating Documentation</a>\n      <a href=\"#handlebars\">Handlebars Reference</a>\n      <a href=\"#surface\">Surface CSS Reference</a>\n      <a href=\"#external\">External Information</a>\n    </div>\n  </div>\n\n  <a href=\"#disc\">\n    <i class='fa fa-bar-chart fa-2x'></i>\n    <span class=\"m--1\">Disc</span>\n  </a>\n\n  <a href=\"#about\">\n    <i class='fa fa-user fa-2x'></i>\n    <span class=\"m--1\">About</span>\n  </a>\n</nav>\n";
 },"useData":true});
 container["page"] = container["page"] || {};
 container["page"]["about"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
@@ -33,6 +37,20 @@ container["page"]["about"] = Handlebars.template({"1":function(container,depth0,
     return "      <div class=\"g--10 m--1 no-margin\">\n            <h2 class=\"m--1 color--paper fade-in-from-top\">About</h2>\n      </div>\n";
 },"4":function(container,depth0,helpers,partials,data) {
     return "    <div class=\"card\">\n      <h2>Author</h2>\n      <p>\n        Fluxbuild is written by <a href=\"https://github.com/Flubbex\">Flubbex.</a>\n      </p>\n    </div>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return ((stack1 = (helpers.extend || (depth0 && depth0.extend) || helpers.helperMissing).call(depth0 != null ? depth0 : (container.nullContext || {}),"layout",{"name":"extend","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
+},"useData":true});
+container["page"] = container["page"] || {};
+container["page"]["disc"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "\n"
+    + ((stack1 = (helpers.content || (depth0 && depth0.content) || helpers.helperMissing).call(depth0 != null ? depth0 : (container.nullContext || {}),"fullpage",{"name":"content","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "\n";
+},"2":function(container,depth0,helpers,partials,data) {
+    return "  <embed src=\"content/disc/index.html\" class=\"no-margin\" style=\"height:inherit;width:100%;\"></embed>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 

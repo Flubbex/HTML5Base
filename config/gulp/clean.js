@@ -6,5 +6,6 @@ module.exports = [
   path.release,
   path.doc_js+select.app,
   path.doc_css+select.surface_css,
-  path.doc_content+select.all
+  path.doc_disc+select.all,
+  path.doc_docs+select.all
 ];

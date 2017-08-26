@@ -6,9 +6,9 @@ var gulp        = require("gulp"),
 gulp.task('lint', function()
 {
     var target = util.env.file ? config.path.source+util.env.file
-                                  : [config.path.source+"**/**.js","!source/templates.js"];
+                                  : [config.path.source+"**/**.js"]
+                                    .concat(config.lint.blacklist);
     return gulp.src(target)
-    .pipe(jshint({asi:true}))
-    .pipe(jshint.reporter("jshint-stylish",{verbose:false}))
-    .pipe(jshint.reporter("fail"))
+    .pipe(jshint(config.lint.jshint))
+    .pipe(jshint.reporter("jshint-stylish",config.lint.stylish))
 });

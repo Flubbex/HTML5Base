@@ -1,6 +1,14 @@
 var perfnow     = require("./util/perfnow"),
+    flux        = require("flux"),
     Backbone    = require("backbone");
-//Your application
+
+/**
+ * Core for your application that gets bottled into a factory.
+ * All your services, factories and such will be bottled beforehand and
+ * are accesible from `container`.
+ * @param {object} container A BottleJS container
+ * @returns {object} service A service to expose
+ */
 var Application = function(container) {
   container.$ = container.zest;
 
@@ -15,6 +23,7 @@ var Application = function(container) {
       container.page.start();
 
       var history = Backbone.history.start();
+
       if (!history)
         container.page.loadPage('home');
 

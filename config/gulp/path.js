@@ -17,6 +17,8 @@ module.exports = {
     doc:          'docs/',
     doc_js:       'docs/js/',
     doc_css:      'docs/css/',
-    doc_content:  'docs/content/',
+    doc_content:  'docs/content',
+    doc_docs:     'docs/content/docs/',
+    doc_disc:     'docs/content/disc/',
     test:         'test/'
 };

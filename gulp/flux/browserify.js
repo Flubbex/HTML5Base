@@ -1,4 +1,4 @@
-var gulp        = require("gulp"),
+var gulp        = require("gulp4"),
     browserify  = require("browserify"),
     fs          = require("fs"),
     rename      = require("gulp-rename"),

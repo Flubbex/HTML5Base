@@ -1,4 +1,4 @@
-var gulp        = require("gulp"),
+var gulp        = require("gulp4"),
     document      = require("gulp-documentation");
 
 //Generate documentation from /source to /docs/content

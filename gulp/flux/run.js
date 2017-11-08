@@ -1,4 +1,4 @@
-var gulp        = require("gulp"),
+var gulp        = require("gulp4"),
     util        = require("gulp-util"),
     shell       = require('gulp-shell');
     dom         = require('jsdom-global');

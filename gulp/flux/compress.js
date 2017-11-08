@@ -1,4 +1,4 @@
-var gulp        = require("gulp"),
+var gulp        = require("gulp4"),
     uglify      = require("gulp-uglify"),
     tap         = require("gulp-tap"),
     size    = require("gulp-filesize");

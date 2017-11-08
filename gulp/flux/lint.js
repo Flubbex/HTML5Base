@@ -1,4 +1,4 @@
-var gulp        = require("gulp"),
+var gulp        = require("gulp4"),
     jshint       = require("gulp-jshint"),
     util        = require("gulp-util");
 //Lint /source

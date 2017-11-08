@@ -1,4 +1,4 @@
-var gulp = require("gulp"),
+var gulp = require("gulp4"),
   util = require("gulp-util"),
   tap = require("gulp-tap"),
   depcheck = require('depcheck');
@@ -30,6 +30,7 @@ var gulp = require("gulp"),
 //Check for unused dependencies
 gulp.task("depcheck", function() {
   var target = __dirname + "/../..";
+  console.log(target)
   depcheck(target, options, function(unused) {
     {
       console.log("--UNUSED DEPENDENCIES--")

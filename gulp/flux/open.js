@@ -1,4 +1,4 @@
-var gulp      = require("gulp"),
+var gulp      = require("gulp4"),
     util      = require("gulp-util"),
     open      = require("gulp-open");
 

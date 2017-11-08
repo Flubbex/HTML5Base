@@ -1,4 +1,4 @@
-var gulp                = require("gulp"),
+var gulp                = require("gulp4"),
     handlebars          = require("handlebars"),
     gulp_handlebars     = require('gulp-handlebars'),
     wrap                = require("gulp-wrap"),

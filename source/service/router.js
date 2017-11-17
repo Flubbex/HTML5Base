@@ -1,15 +1,14 @@
-var perfnow  = require("../util/perfnow"),
-    Backbone = require("backbone");
-
+var perfnow  = require("util/perfnow"),
+    Lightrouter = require("lightrouter");
+    
 module.exports = function router() {
 
   console.log("Initializing RouterModule", "[~" + perfnow() + "ms]")
-
-  var _Router = Backbone.Router.extend({
-    routes: {
-      ":query": "loadPage",
-    }
+  
+  var router = new Lightrouter({
+	  type: 'hash',             // Default routing type
+	  pathRoot: '',  // Base path for your app
   });
-
-  return new _Router();
+ 
+  return router;
 };

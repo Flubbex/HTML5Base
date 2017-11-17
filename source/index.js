@@ -1,83 +1,45 @@
-var perfnow   = require("./util/perfnow");
-console.log("Entrypoint @ ",new Date().toString().slice(16, 24),"[~"+perfnow()+"ms]");
-
-var bulk      = require('bulk-require'),
-  config      = require("../config/app"),
-  Bottle      = require("bottlejs"),
-  Application = require("./app"),
-  content     = bulk(__dirname , ["service/*.js",
+var perfnow     = require("util/perfnow"),
+    fluxbottle  = require("fluxbottle"),
+    config      = require("../config/app"),
+    bulk        = require('bulk-require'),
+    content     = bulk(__dirname , ["service/*.js",
                                   "provider/*.js",
                                   "factory/*.js",
                                   "decorator/*.js",
                                   "middleware/*.js"]);
-
+                                                                  
 /**
-  Used internally to instantiate an application using provided arguments and returns it.
- *
-   @param {object} application The object on which to call the function.
-   @param {object} config Configuration file
-   @param {object} include Hashmap of includables ( libraries e.g. ).
-   @param {object} modules Hashmap of modules.
-   @returns {object} An instantiated application
-*/
-function initialize(app,config,content) {
-  var bottle = Bottle(config.about.filename);
-  var dependencies = [];
+ * Core for your application that gets bottled into a factory.
+ * All your services, factories and such will be bottled beforehand and
+ * are accesible from `container`.
+ * @param {object} container A BottleJS container
+ * @returns {object} service A service to expose
+ */
+var Application = function(container) {
+  container.$ = container.zest;
 
-  Object.keys(content).map(function(type){
-    var subset = content[type];
-    Object.keys(subset).map(function(name){
-      var realname = name;
-      var name     = subset[name].name||name;
+  container.router.add("{query}", (options) =>
+    container.page.loadPage(options.query)
+  );
 
-      console.log("\t","Bottling",type,name,"[~" + perfnow() + "ms]");
-
-      bottle[type](name,subset[realname]);
-      dependencies.push(name);
-    })
-  })
-
-  var appdata = [config.about.filename,app]//.concat(dependencies);
-
-  bottle.factory.apply(bottle,appdata);
-
-  return bottle;
+  return {
+    start:    function() {
+      console.log("\t","Application Started", "[~" + perfnow() + "ms]");
+      container.page.start();
+   
+    window.addEventListener("hashchange",
+                                (e) => container.router.run()
+                              );
+    
+    if (window.location.hash === "")
+      window.location.hash = "#home";
+    
+    container.router.run();
+    
+    }
+  }
 };
 
-/**
-  Initializes an application using supplied arguments.
-  Usually called automatically.
- *
-   @param {object} application The object on which to call the function.
-   @param {object} config Configuration file
-   @param {object} include Hashmap of includables ( libraries e.g. ).
-   @param {object} modules Hashmap of modules.
-   @returns {object} An instantiated application
-*/
-function setup(application, config, content) {
-  if (this.started)
-    console.warn("Warning: App setup called while already started")
+window.app = fluxbottle.setup(Application,config,content);
 
-  console.log("Initializing Application","[~" + perfnow() + "ms]");
-
-  this.app = this.initialize(application, config, content);
-
-  window.addEventListener("DOMContentLoaded",function(){
-    this.app.container.fluxbuild.start();
-  });
-
-  console.log("Finished Application Initialization [~" + perfnow() + "ms]");
-
-  return this.app;
-};
-
-module.exports = {
-  app:        null,
-  started:    false,
-  initialize: initialize,
-  setup:      setup
-};
-
-//Autostarter for browsers
-if (typeof(window) !== "undefined")
-  window.app = module.exports.setup(Application, config, content);
+module.exports = Application;

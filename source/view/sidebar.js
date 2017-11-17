@@ -1,21 +1,23 @@
-var Backbone = require("backbone");
 
-var SidebarView = Backbone.View.extend({
-  initialize: function(data) {
+var SidebarView = function(data){
+
+    this.el = document.getElementById(data.el);
     this.template = data.template;
     this.model = data.model;
     this.nav = data.nav;
     this.render();
-  },
-  events: {
-    "click a": "hide"
-  },
-  hide: function() {
-    this.nav.checked = false;
-  },
-  render: function() {
-    this.$el.html(this.template(this.model));
-  }
-});
 
+  this.el.addEventListener("click a",this.hide,this)
+  
+  this.render();
+};
+
+SidebarView.prototype.hide = function() {
+    this.nav.checked = false;
+}
+
+SidebarView.prototype.render =  function() {
+    this.el.innerHTML = this.template(this.model);
+}
+  
 module.exports = SidebarView;

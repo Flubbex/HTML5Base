@@ -4,7 +4,6 @@ var gulp        = require("gulp4"),
     rename      = require("gulp-rename"),
     tap         = require('gulp-tap'),
     util        = require("gulp-util"),
-    disc        = require("disc"),
     size        = require("gulp-filesize");
 
 //browserify source/index.js to dist/js/app.js
@@ -17,12 +16,7 @@ gulp.task("browserify",function(){
         file.contents = browserify(file.path,config.browserify)
                                   .bundle();
       }))
-      .pipe(tap(function(file){
-        file
-        .pipe(disc())
-        .pipe(fs.createWriteStream(config.path.doc_disc+"index.html"))
-      }))
       .pipe(rename(config.select.app))
       .pipe(gulp.dest(config.path.dist_js))
-      .pipe(size())
+      .pipe(size());
 });

@@ -1,4 +1,4 @@
-var gulp = require("gulp");
+var gulp = require("gulp4");
 
 gulp.task("printconfig",function(){
   console.log("Configured information:")

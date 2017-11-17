@@ -1,4 +1,4 @@
-var handlebars = require("handlebars"),
+var handlebars = require("handlebars/runtime"),
     layouts    = require("handlebars-layouts"),
     _templates = require("../template");
 

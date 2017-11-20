@@ -15,33 +15,130 @@
 
     <!-- Skeleton CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <link rel="stylesheet" href="css/surface_styles.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bulma.css">
+    
+    <!-- Theme CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" id="theme" href="">
+    
     <!-- Custom CSS
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="stylesheet" href="css/index.css">
-
+    
     <!-- Favicon
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <link rel="icon" type="image/png" href="images/favicon.png">
-
+    
     <!-- Application JavaScript
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script type="text/javascript" src="js/fluxbuild.js">   </script>
-
+    
+    
+     
 </head>
 <body>
- <input type="checkbox" id="nav--super-vertical-responsive">
- <label for="nav--super-vertical-responsive" class="fade-in-from-left anim-delay--5">
-   <i class="fa fa-bars" aria-hidden="true"></i>
- </label>
+  <!-- Navbar
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="#home">
+      <img src="images/logo.png" alt="Fluxbuild">
+      </a>
 
- <aside id="sidebar" class="nav--super-vertical g--2 g-m--3 g-s--6 g-t--12 no-margin-vertical" role="sidebar"></aside>
+      <button class="button navbar-burger">
+        <span><span/>
+        <span><span/>
+        <span><span/>
+      </button>
+    </div>
+    
+  <!-- Navbar Menu
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="#home">
+        Home
+        </a>
+        
+        <div class="navbar-item has-dropdown is-hoverable">
+        
+          <div class="navbar-link">Documentation</div>
+          
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#documentation/bulma">Bulma CSS</a>
+            <a class="navbar-item" href="#documentation/documentation">Documenting</a>
+            <a class="navbar-item" href="#documentation/external">External Links</a>
+            <a class="navbar-item" href="#documentation/gulp">Gulp</a>
+            <a class="navbar-item" href="#documentation/handlebars">Handlebars</a>
+            <a class="navbar-item" href="#documentation/structure">Structure</a>
+            <a class="navbar-item" href="#documentation/workflow">Workflow</a>
+            
+          </div>
+          
+        </div>
+        <a class="navbar-item" href="#about">About</a>
+      </div>
+      
+    <!-- Navbar End
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="field is-horizontal">
+            <label class="field-label">Theme</label>
+              <div class="field-body">
+                <div class="select">
+                  <select id="themeselect">
+                      <option value="" disabled="" selected="">Themes</option>
+                      <option disabled="">───</option>
+                      <option value="default">Default</option>
+                      <option value="cerulean">Cerulean</option>
+                      <option value="cosmo">Cosmo</option>
+                      <option value="cyborg">Cyborg</option>
+                      <option value="darkly">Darkly</option>
+                      <option value="flatly">Flatly</option>
+                      <option value="journal">Journal</option>
+                      <option value="litera">Litera</option>
+                      <option value="lumen">Lumen</option>
+                      <option value="lux">Lux</option>
+                      <option value="materia">Materia</option>
+                      <option value="minty">Minty</option>
+                      <option value="nuclear">Nuclear</option>
+                      <option value="pulse">Pulse</option>
+                      <option value="sandstone">Sandstone</option>
+                      <option value="simplex">Simplex</option>
+                      <option value="slate">Slate</option>
+                      <option value="solar">Solar</option>
+                      <option value="spacelab">Spacelab</option>
+                      <option value="superhero">Superhero</option>
+                      <option value="united">United</option>
+                      <option value="yeti">Yeti</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
- <main id="page"
- class="fade-in-from-top g--10 g-m--12 m--2 m-m--0 no-margin-vertical"
- role="main"
- style="height:100%;"></main>
-    <!-- End Document
+  </nav>
+  
+  <!-- Page (Template Entrypoint)
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div id="page"></div>
+    
+  <!-- Footer
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <footer class="footer">
+    <div class="column">
+      Made by Flubbex
+    </div>
+    <div class="column">
+      Github
+    </div>
+  </footer>
+  
+  <!-- Body End
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
 </html>

@@ -1,7 +1,7 @@
 
 var SidebarView = function(data){
 
-    this.el = document.getElementById(data.el);
+    this.el = $(data.el)[0];
     this.template = data.template;
     this.model = data.model;
     this.nav = data.nav;

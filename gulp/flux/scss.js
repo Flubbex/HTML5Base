@@ -5,7 +5,7 @@ var gulp        = require("gulp4"),
 
 //Build SCSS to dist/css
 gulp.task('build_scss', function(){
-	return gulp.src(config.path.scss+config.select.surface_scss)
+	return gulp.src(config.path.scss+config.select.bulma_scss)
 	.pipe(sass({
 		errLogToConsole: true
 	}))
@@ -15,7 +15,7 @@ gulp.task('build_scss', function(){
 
 //Minify dist/css and publish to docs/css
 gulp.task('scss',gulp.series('build_scss',function(){
-  return gulp.src(config.path.dist_css+config.select.surface_css)
+  return gulp.src(config.path.dist_css+config.select.bulma_css)
   .pipe(size())
   .pipe(cleanCSS({compatibility: 'ie8'}))
   .pipe(size())

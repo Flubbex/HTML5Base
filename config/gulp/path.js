@@ -8,7 +8,7 @@ module.exports = {
     source_template:     'source/template/',
 
     all:          '*/**',
-    scss:         'source/scss/',
+    scss:         'sass/',
     dist:         'dist/',
     dist_js:      'dist/js/',
     dist_css:     'dist/css/',

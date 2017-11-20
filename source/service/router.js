@@ -7,7 +7,7 @@ module.exports = function router() {
   
   var router = new Lightrouter({
 	  type: 'hash',             // Default routing type
-	  pathRoot: '',  // Base path for your app
+	  pathRoot: 'fluxbuild',  // Base path for your app
   });
  
   return router;

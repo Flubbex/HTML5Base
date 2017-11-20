@@ -1,15 +1,15 @@
 {{#block "fullpage"}}
-<header class="container--wrap no-margin-vertical">
-    <h1 class="m--1 g--12 no-margin-vertical">
-      {{name}}
-    </h1>
-      {{#block "header"}}
+  <section class="hero is-primary">
+    <div class="hero-body">
+        {{#block "header"}}
+        {{/block}}
+    </div>
+  </section>
+
+  <div class="container" id="page">
+      {{#block "page"}}
+      Content
       {{/block}}
-</header>
-  <div class="g--10 m--1">
-    {{#block "page"}}
-    Content
-    {{/block}}
   </div>
-</div>
 {{/block}}
+  

@@ -38,8 +38,6 @@ var Application = function(container) {
       
           if (opacity < 1)
             window.setTimeout(lift,10)
-          else
-            console.log("Finish")
         };
         
     html.style.opacity = opacity;

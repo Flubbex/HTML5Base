@@ -32,6 +32,7 @@
     "gulp-documentation": "^3.2.1",
     "gulp-filesize": "0.0.6",
     "gulp-handlebars": "^4.0.0",
+    "gulp-insert": "^0.5.0",
     "gulp-jshint": "^2.0.4",
     "gulp-mocha": "^4.1.0",
     "gulp-open": "^2.0.0",

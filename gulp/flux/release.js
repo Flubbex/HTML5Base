@@ -8,6 +8,6 @@ gulp.task("release", function()
 {
     return gulp.src(config.path.dist+config.select.bundle)
     .pipe(rename(config.select.app_version))
-    .pipe(insert.append('window.cachebuster = Date.now();'))
+    .pipe(insert.append('window.cachebuster = '+Date.now()+';'))
     .pipe(gulp.dest(config.path.release))
 });

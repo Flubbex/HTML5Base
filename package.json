@@ -17,7 +17,7 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babelify": "^8.0.0",
-    "bottlejs": "^1.6.1",
+    "bottlejs": "^1.6.2",
     "browserify": "^14.5.0",
     "bulkify": "^1.4.2",
     "bulma": "^0.6.1",
@@ -46,7 +46,7 @@
     "gulp4": "^4.0.2",
     "handlebars": "^4.0.11",
     "handlebars-layouts": "^3.1.4",
-    "jsdom": "^11.4.0",
+    "jsdom": "^11.5.1",
     "jsdom-global": "^3.0.2",
     "jshint": "^2.9.5",
     "jshint-stylish": "^2.2.1",
@@ -54,7 +54,7 @@
     "mocha": "^3.5.3",
     "performance-now": "^2.1.0",
     "require-all": "^2.2.0",
-    "uglify-es": "^3.1.10",
+    "uglify-es": "^3.2.0",
     "underscore": "^1.8.3",
     "watchify": "^3.9.0",
     "zest": "^0.1.3"

@@ -1,0 +1,11 @@
+{
+  "name": "flux-libraries",
+  "version": "1.0.0",
+  "description": "Set of tools to increase fluxbuild productivity",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Flubbex",
+  "license": "ISC"
+}

@@ -1,7 +1,10 @@
 var gulp        = require("gulp4"),
-    uglify      = require("gulp-uglify"),
+    uglifyes    = require('uglify-es');
+    composer    = require("gulp-uglify/composer"),
     tap         = require("gulp-tap"),
-    size    = require("gulp-filesize");
+    size        = require("gulp-filesize"),
+    
+    uglify      = composer(uglifyes);
 
 //Uglify bundled code
 gulp.task("compress",function(){

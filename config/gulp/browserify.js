@@ -1,6 +1,6 @@
 module.exports = {
     debug:true,
-    transform:["bulkify"],
+    transform:["bulkify","babelify"],
     fullPaths:true,
     paths:['lib']
 };

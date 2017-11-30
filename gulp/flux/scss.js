@@ -1,7 +1,8 @@
 var gulp        = require("gulp4"),
-    sass        = require('gulp-sass'),
+    sass        = require("gulp-sass"),
     size        = require("gulp-filesize"),
-    cleanCSS    = require('gulp-clean-css');
+    rename      = require("gulp-rename"),
+    cleanCSS    = require("gulp-clean-css");
 
 //Build SCSS to dist/css
 gulp.task('build_scss', function(){
@@ -9,6 +10,7 @@ gulp.task('build_scss', function(){
 	.pipe(sass({
 		errLogToConsole: true
 	}))
+  .pipe(rename(config.select.bulma_css))
   .pipe(gulp.dest(config.path.dist_css))
 });
 
